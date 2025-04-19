@@ -13,10 +13,12 @@ export const BrowseHomes = (): JSX.Element => {
   return (
     <div className='mt-12 flex flex-col items-center p-0 sm:px-4 sm:py-12 md:p-12'>
       <div
+        data-testid='category-toggle'
         className='bg-secondary-0 border-base-300 relative h-[64px] w-[280px] cursor-pointer rounded-lg border-[1px] p-1 sm:w-[352px]'
         onClick={handleToggle}
       >
         <div
+          data-testid='category-slider'
           className={`border-base-300 absolute top-[50%] h-[48px] w-[120px] translate-y-[-50%] rounded-lg border-[1px] bg-white shadow-md transition-transform duration-300 ease-in-out sm:w-[151px] ${
             currentCategory === 'Houses'
               ? 'translate-x-[6px]'
@@ -25,6 +27,7 @@ export const BrowseHomes = (): JSX.Element => {
         />
         <div className='relative flex h-full'>
           <div
+            data-testid='houses-category'
             className={`z-[3] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
               currentCategory === 'Houses'
                 ? 'text-accent-100 font-bold'
@@ -34,6 +37,7 @@ export const BrowseHomes = (): JSX.Element => {
             Houses
           </div>
           <div
+            data-testid='apartments-category'
             className={`z-[3] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
               currentCategory === 'Apartments'
                 ? 'text-accent-100 font-bold'

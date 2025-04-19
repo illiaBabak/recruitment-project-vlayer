@@ -12,10 +12,13 @@ export const TestimonialsSection = (): JSX.Element => {
       </p>
 
       <div className='flex w-full flex-col items-center text-center md:mt-1 lg:mt-5'>
-        <p className='mb-4 w-[95%] text-xl leading-[160%] md:h-[96px] md:w-[80%] lg:w-[65%]'>
+        <p
+          data-testid='testimonial-text'
+          className='mb-4 w-[95%] text-xl leading-[160%] md:h-[96px] md:w-[80%] lg:w-[65%]'
+        >
           {TESTIMONIALS[activeTestimonial].testimonial}
         </p>
-        <p className='md:mt-7'>
+        <p data-testid='testimonial-author'>
           <span className='font-semibold text-black'>
             {TESTIMONIALS[activeTestimonial].author},
           </span>
@@ -29,6 +32,7 @@ export const TestimonialsSection = (): JSX.Element => {
       <div className='bottom-[10%] left-1/2 flex gap-1 md:absolute md:-translate-x-1/2 md:gap-4'>
         {TESTIMONIALS.map((testimonial, index) => (
           <div
+            data-testid={`testimonial-${index}`}
             key={`${testimonial.author}-${index}`}
             className='relative mx-3 flex h-[72px] w-[72px] cursor-pointer items-center justify-center transition-all duration-300'
             onClick={() => setActiveTestimonial(index)}
