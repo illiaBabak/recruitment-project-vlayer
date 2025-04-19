@@ -36,17 +36,17 @@ export const Card = ({
   return (
     <motion.div
       {...animation}
-      className={`group flex h-[245px] w-[270px] flex-col items-center justify-center rounded-lg hover:shadow-2xl lg:h-[290px] lg:w-[300px] xl:h-[345px] xl:w-[352px] ${className}`}
+      className={`group flex h-[200px] max-w-[230px] min-w-[230px] flex-col items-center justify-center rounded-lg hover:shadow-2xl lg:h-[290px] lg:max-w-[300px] lg:min-w-[300px] xl:h-[345px] xl:max-w-[352px] xl:min-w-[352px] ${className}`}
     >
       <img
-        className='h-[145px] w-full lg:h-[165px] xl:h-[200px]'
+        className='max-h-[125px] min-h-[125px] w-full lg:max-h-[165px] lg:min-h-[165px] xl:max-h-[200px] xl:min-h-[200px]'
         src={img}
         alt='card-icon'
       />
       {category === 'House' && (
         <img
           src='/public/house-tag.png'
-          className='absolute top-[50%] left-[-6px] z-[3] h-[32px] w-[76px] md:left-[-8px] md:h-[40px] md:w-[96px]'
+          className='absolute top-[45%] left-[-6px] z-[3] h-[32px] w-[76px] md:left-[-8px] md:h-[40px] md:w-[96px] lg:top-[50%]'
           alt='category-tag'
         />
       )}
@@ -54,10 +54,11 @@ export const Card = ({
       {category === 'Apartment' && (
         <img
           src='/public/apartment-tag.png'
-          className='absolute top-[50%] left-[-6px] z-[3] h-[32px] w-[100px] md:left-[-8px] md:h-[40px] md:w-[135px]'
+          className='absolute top-[45%] left-[-6px] z-[3] h-[32px] w-[100px] md:left-[-8px] md:h-[40px] md:w-[135px] lg:top-[50%]'
           alt='category-tag'
         />
       )}
+
       <div className='relative flex h-full w-[calc(100%-2px)] flex-col justify-between rounded-b-lg bg-white p-5 outline outline-black/10 group-hover:outline-none'>
         {shouldBeLiked && (
           <button

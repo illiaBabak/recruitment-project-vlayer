@@ -16,7 +16,7 @@ export const StartSection = (): JSX.Element => {
       }}
       initial='hidden'
       animate='show'
-      className='mt-[96px] flex h-[calc(100vh-96px)] w-full flex-col md:flex-row'
+      className='mt-[96px] flex min-h-[calc(100vh-96px)] w-full flex-col md:flex-row'
     >
       <aside className='bg-start-section relative flex w-full flex-col items-start justify-center md:w-[50%]'>
         {/* Gradient overlay with blur effect */}
@@ -69,7 +69,7 @@ export const StartSection = (): JSX.Element => {
 
       <aside className='relative flex h-full w-full items-center justify-center md:w-[50%] md:items-stretch md:justify-normal'>
         <Card
-          img='/public/house-image-1.png'
+          img='/public/apartment3.png'
           title='Beverly Springfield'
           location='2821 Lake Sevilla, Palm Harbor, TX'
           price='2700'
@@ -83,7 +83,7 @@ export const StartSection = (): JSX.Element => {
         />
 
         <img
-          className='h-[75%] w-[75%] object-cover md:h-full md:w-full'
+          className='h-[75%] w-[75%] object-cover md:h-screen md:w-full'
           src='/public/map.png'
           alt='map-logo'
         />
