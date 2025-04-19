@@ -40,12 +40,12 @@ export const TestimonialsSection = (): JSX.Element => {
             {activeTestimonial === index && (
               <div className='absolute top-0 left-0 h-[72px] w-[72px]'>
                 <img
-                  src='public/avatar-grey-ellipse.png'
+                  src='/avatar-grey-ellipse.png'
                   alt='ellipse1'
                   className='absolute top-0 left-0 z-[4] min-h-[72px] min-w-[72px] object-contain'
                 />
                 <img
-                  src='public/avatar-purple-ellipse.png'
+                  src='/avatar-purple-ellipse.png'
                   alt='ellipse2'
                   className='absolute top-[-3.5px] left-[3px] z-[4] min-h-[72px] min-w-[72px] scale-[91.8%] object-contain'
                 />
