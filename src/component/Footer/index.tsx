@@ -6,7 +6,7 @@ export const Footer = (): JSX.Element => {
       <div className='relative flex w-[full] flex-col justify-between md:flex-row'>
         <div className='absolute left-0 flex flex-row items-center justify-center md:static'>
           <img
-            src='/public/frame.png'
+            src='/frame.png'
             alt='header-logo'
             className='h-[32px] w-[32px]'
           />
@@ -27,22 +27,18 @@ export const Footer = (): JSX.Element => {
         </p>
         <div className='mt-7 flex flex-row justify-center gap-12 text-base md:mt-1 md:justify-normal'>
           <img
-            src='/public/facebook.png'
+            src='/facebook.png'
             alt='Facebook'
             className='h-[20px] w-[20px]'
           />
           <img
-            src='/public/instagram.png'
+            src='/instagram.png'
             alt='Instagram'
             className='h-[20px] w-[20px]'
           />
+          <img src='/twitter.png' alt='Twitter' className='h-[20px] w-[20px]' />
           <img
-            src='/public/twitter.png'
-            alt='Twitter'
-            className='h-[20px] w-[20px]'
-          />
-          <img
-            src='/public/linkedin.png'
+            src='/linkedin.png'
             alt='LinkedIn'
             className='h-[20px] w-[20px]'
           />

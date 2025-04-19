@@ -69,7 +69,7 @@ export const StartSection = (): JSX.Element => {
 
       <aside className='relative flex h-full w-full items-center justify-center md:w-[50%] md:items-stretch md:justify-normal'>
         <Card
-          img='/public/apartment3.png'
+          img='/apartment3.png'
           title='Beverly Springfield'
           location='2821 Lake Sevilla, Palm Harbor, TX'
           price='2700'
@@ -84,7 +84,7 @@ export const StartSection = (): JSX.Element => {
 
         <img
           className='h-[75%] w-[75%] object-cover md:h-screen md:w-full'
-          src='/public/map.png'
+          src='/map.png'
           alt='map-logo'
         />
       </aside>

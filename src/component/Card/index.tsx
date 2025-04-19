@@ -27,10 +27,10 @@ export const Card = ({
 
   // Helper function to determine heart icon source based on state
   const getHeartIconSrc = (): string => {
-    if (isPressedHeart) return '/public/pressed-heart.png';
-    if (isHoveredHeart) return '/public/hovered-heart.png';
+    if (isPressedHeart) return '/pressed-heart.png';
+    if (isHoveredHeart) return '/hovered-heart.png';
 
-    return '/public/heart-icon.png';
+    return '/heart-icon.png';
   };
 
   return (
@@ -45,7 +45,7 @@ export const Card = ({
       />
       {category === 'House' && (
         <img
-          src='/public/house-tag.png'
+          src='/house-tag.png'
           className='absolute top-[45%] left-[-6px] z-[3] h-[32px] w-[76px] md:left-[-8px] md:h-[40px] md:w-[96px] lg:top-[50%]'
           alt='category-tag'
         />
@@ -53,7 +53,7 @@ export const Card = ({
 
       {category === 'Apartment' && (
         <img
-          src='/public/apartment-tag.png'
+          src='/apartment-tag.png'
           className='absolute top-[45%] left-[-6px] z-[3] h-[32px] w-[100px] md:left-[-8px] md:h-[40px] md:w-[135px] lg:top-[50%]'
           alt='category-tag'
         />
