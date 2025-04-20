@@ -1,17 +1,17 @@
 import { JSX, useState } from 'react';
 import { CONSTRUCTIONS } from 'src/utils/constants';
 import { Card } from '../Card';
+import { ConstructionCategory } from 'src/types';
 
 export const BrowseHomes = (): JSX.Element => {
-  const [currentCategory, setCurrentCategory] = useState<
-    'Houses' | 'Apartments'
-  >('Houses');
+  const [currentCategory, setCurrentCategory] =
+    useState<ConstructionCategory>('Houses');
 
   const handleToggle = () =>
     setCurrentCategory(currentCategory === 'Houses' ? 'Apartments' : 'Houses');
 
   return (
-    <div className='mt-12 flex flex-col items-center p-0 sm:px-4 sm:py-12 md:p-12'>
+    <div className='mt-12 flex min-h-screen w-full flex-col items-center p-0 sm:px-4 sm:pt-12 md:p-12'>
       <div
         data-testid='category-toggle'
         className='bg-secondary-0 border-base-300 relative h-[64px] w-[280px] cursor-pointer rounded-lg border-[1px] p-1 sm:w-[352px]'
@@ -65,12 +65,8 @@ export const BrowseHomes = (): JSX.Element => {
           ).map((el, index) => (
             <Card
               key={`construction-${el.name}-${index}-${el.type}`}
-              img={el.image}
-              title={el.name}
-              location={el.location}
-              price={el.price}
+              construction={el}
               shouldBeLiked={true}
-              category={el.type}
               className='relative w-[260px] flex-shrink-0 md:w-auto'
               animation={{
                 initial: { opacity: 0 },

@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import LogRocket from 'logrocket';
 
 const firebaseConfig = {
   apiKey: import.meta.env.ENV_FIREBASE_API_KEY,
@@ -22,9 +23,16 @@ export const signInWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
 
-    await signInWithPopup(auth, provider);
+    const user = await signInWithPopup(auth, provider);
+
+    if (user.user.displayName && user.user.email) {
+      LogRocket.identify(user.user.uid, {
+        name: user.user.displayName,
+        email: user.user.email,
+      });
+    }
   } catch (error) {
-    console.error('Error signing in with Google:', error);
+    LogRocket.error('Error signing in with Google:', error);
     throw error;
   }
 };
@@ -33,7 +41,7 @@ export const logout = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.error('Error signing out:', error);
+    LogRocket.error('Error signing out:', error);
     throw error;
   }
 };

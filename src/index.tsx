@@ -11,6 +11,4 @@ if (root) {
       <App />
     </StrictMode>
   );
-} else {
-  throw new Error('Something went wrong with root element!');
 }

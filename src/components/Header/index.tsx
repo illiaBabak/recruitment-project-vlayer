@@ -2,8 +2,9 @@ import { JSX, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp } from 'src/utils/animations';
 import { SECTIONS } from 'src/utils/constants';
-import { signInWithGoogle, auth } from 'src/utils/firebase';
-import { UserAvatar } from 'src/component/UserAvatar';
+import { signInWithGoogle, auth } from 'src/api/firebase';
+import { UserAvatar } from 'src/components/UserAvatar';
+import LogRocket from 'logrocket';
 
 export const Header = (): JSX.Element => {
   const [isPressedSignUpBtn, setIsPressedSignUpBtn] = useState(false);
@@ -27,7 +28,7 @@ export const Header = (): JSX.Element => {
       setIsPressedLoginBtn(false);
       setIsPressedSignUpBtn(false);
     } catch (error) {
-      console.error('Authentication error:', error);
+      LogRocket.error('Authentication error:', error);
     } finally {
       setIsLoading(false);
     }
@@ -39,13 +40,13 @@ export const Header = (): JSX.Element => {
         hidden: {},
         show: {
           transition: {
-            staggerChildren: 0.15,
+            staggerChildren: 0.1,
           },
         },
       }}
       initial='hidden'
       animate='show'
-      className='border-base-100 fixed top-0 z-10 flex h-[72px] w-full flex-row items-center justify-around border-[1.5px] bg-white md:h-[96px]'
+      className='border-base-100 fixed top-0 z-10 flex h-[72px] w-full flex-row items-center justify-around border-[1.5px] bg-white px-8 md:h-[96px]'
     >
       {/* Logo section */}
       <motion.div
@@ -62,7 +63,7 @@ export const Header = (): JSX.Element => {
           <motion.div
             key={`${section}-${index}`}
             variants={fadeInUp}
-            className='cursor-pointer'
+            className='hover:bg-purple-94 cursor-pointer rounded-lg px-3 py-2 transition-colors duration-300'
           >
             {section}
           </motion.div>
@@ -72,7 +73,12 @@ export const Header = (): JSX.Element => {
       {/* Desktop auth buttons or user avatar */}
       <div className='hidden flex-row items-center gap-[18px] md:flex'>
         {isAuthenticated ? (
-          <UserAvatar />
+          <motion.div
+            className='relative flex h-[48px] w-[256px] items-center justify-center'
+            variants={fadeInUp}
+          >
+            <UserAvatar />
+          </motion.div>
         ) : (
           <>
             <motion.button

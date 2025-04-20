@@ -1,9 +1,12 @@
 import { JSX } from 'react';
-import { Header } from 'src/component/Header';
-import { StartSection } from 'src/component/StartSection';
-import { BrowseHomes } from 'src/component/BrowseHomes';
-import { TestimonialsSection } from 'src/component/TestimonialsSection';
-import { Footer } from 'src/component/Footer';
+import { Header } from 'src/components/Header';
+import { StartSection } from 'src/components/StartSection';
+import { BrowseHomes } from 'src/components/BrowseHomes';
+import { TestimonialsSection } from 'src/components/TestimonialsSection';
+import { Footer } from 'src/components/Footer';
+import LogRocket from 'logrocket';
+
+LogRocket.init('p4ccjl/recruitment-task-vlayer');
 
 export const App = (): JSX.Element => {
   return (

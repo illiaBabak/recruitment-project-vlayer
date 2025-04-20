@@ -2,13 +2,15 @@ export type Construction = {
   image: string;
   name: string;
   location: string;
-  price: string;
-  type: 'House' | 'Apartment';
+  price: number;
+  type?: 'House' | 'Apartment';
 };
 
 export type Testimonial = {
   testimonial: string;
-  author: string;
+  authorName: string;
   authorImage: string;
-  authorRole: string;
+  authorRole: 'Renter';
 };
+
+export type ConstructionCategory = 'Houses' | 'Apartments';

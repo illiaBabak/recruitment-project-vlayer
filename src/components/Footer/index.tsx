@@ -13,9 +13,15 @@ export const Footer = (): JSX.Element => {
           <h2 className='ms-1 text-xl leading-[140%] font-bold'>Estatery</h2>
         </div>
         <div className='mt-14 flex h-[60px] flex-row flex-wrap justify-center text-base md:mt-1 md:flex-nowrap md:justify-stretch'>
-          <p className='text-base-600 mx-7 h-[28px]'>HELP CENTER</p>
-          <p className='text-base-600 mx-7 h-[28px]'>FAQ</p>
-          <p className='text-base-600 mx-7 h-[28px]'>TERMS & PRIVACY</p>
+          <p className='text-base-600 mx-7 h-[28px] cursor-pointer hover:underline'>
+            HELP CENTER
+          </p>
+          <p className='text-base-600 mx-7 h-[28px] cursor-pointer hover:underline'>
+            FAQ
+          </p>
+          <p className='text-base-600 mx-7 h-[28px] cursor-pointer hover:underline'>
+            TERMS & PRIVACY
+          </p>
         </div>
       </div>
 
@@ -29,18 +35,22 @@ export const Footer = (): JSX.Element => {
           <img
             src='/facebook.png'
             alt='Facebook'
-            className='h-[20px] w-[20px]'
+            className='h-[20px] w-[20px] cursor-pointer'
           />
           <img
             src='/instagram.png'
             alt='Instagram'
-            className='h-[20px] w-[20px]'
+            className='h-[20px] w-[20px] cursor-pointer'
           />
-          <img src='/twitter.png' alt='Twitter' className='h-[20px] w-[20px]' />
+          <img
+            src='/twitter.png'
+            alt='Twitter'
+            className='h-[20px] w-[20px] cursor-pointer'
+          />
           <img
             src='/linkedin.png'
             alt='LinkedIn'
-            className='h-[20px] w-[20px]'
+            className='h-[20px] w-[20px] cursor-pointer'
           />
         </div>
       </div>

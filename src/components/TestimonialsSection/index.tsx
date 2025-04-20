@@ -1,43 +1,51 @@
+import { motion } from 'framer-motion';
 import { JSX, useState } from 'react';
 import { TESTIMONIALS } from 'src/utils/constants';
 
 export const TestimonialsSection = (): JSX.Element => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
 
   return (
-    <div className='relative flex min-h-screen w-screen flex-col items-center justify-start gap-8 bg-gradient-to-t from-[rgba(240,235,252,1)] to-white p-8 md:justify-center'>
+    <div className='relative flex min-h-screen w-screen flex-col items-center justify-start gap-8 bg-gradient-to-t from-[rgba(240,235,252,1)] to-white px-8 pt-10 pb-8 md:justify-center md:pt-0'>
       <h2 className='text-[40px] font-bold'>Testimonials</h2>
       <p className='mb-2 w-[280px] text-center text-base text-gray-600 md:w-[352px]'>
         See what our property managers, landlords, and tenants have to say
       </p>
 
-      <div className='flex w-full flex-col items-center text-center md:mt-1 lg:mt-5'>
+      <motion.div
+        key={`testimonial-${activeTestimonialIndex}`}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.5 }}
+        className='flex w-full flex-col items-center text-center md:mt-1 lg:mt-5'
+      >
         <p
           data-testid='testimonial-text'
           className='mb-4 w-[95%] text-xl leading-[160%] md:h-[96px] md:w-[80%] lg:w-[65%]'
         >
-          {TESTIMONIALS[activeTestimonial].testimonial}
+          {TESTIMONIALS[activeTestimonialIndex].testimonial}
         </p>
         <p data-testid='testimonial-author'>
           <span className='font-semibold text-black'>
-            {TESTIMONIALS[activeTestimonial].author},
+            {TESTIMONIALS[activeTestimonialIndex].authorName},
           </span>
           <span className='text-base-600'>
             {' '}
-            {TESTIMONIALS[activeTestimonial].authorRole}
+            {TESTIMONIALS[activeTestimonialIndex].authorRole}
           </span>
         </p>
-      </div>
+      </motion.div>
 
       <div className='bottom-[10%] left-1/2 flex gap-1 md:absolute md:-translate-x-1/2 md:gap-4'>
         {TESTIMONIALS.map((testimonial, index) => (
           <div
             data-testid={`testimonial-${index}`}
-            key={`${testimonial.author}-${index}`}
+            key={`${testimonial.authorName}-${index}`}
             className='relative mx-3 flex h-[72px] w-[72px] cursor-pointer items-center justify-center transition-all duration-300'
-            onClick={() => setActiveTestimonial(index)}
+            onClick={() => setActiveTestimonialIndex(index)}
           >
-            {activeTestimonial === index && (
+            {activeTestimonialIndex === index && (
               <div className='absolute top-0 left-0 h-[72px] w-[72px]'>
                 <img
                   src='/avatar-grey-ellipse.png'
@@ -53,7 +61,7 @@ export const TestimonialsSection = (): JSX.Element => {
             )}
             <img
               src={testimonial.authorImage}
-              alt={testimonial.author}
+              alt={testimonial.authorName}
               className='h-[60px] w-[60px] rounded-full object-cover shadow-lg'
             />
           </div>

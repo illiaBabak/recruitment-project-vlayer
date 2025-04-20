@@ -2,6 +2,14 @@ import { JSX } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from 'src/utils/animations';
 import { Card } from '../Card';
+import { Construction } from 'src/types';
+
+const featuredConstruction: Construction = {
+  image: '/apartment3.png',
+  name: 'Beverly Springfield',
+  location: '2821 Lake Sevilla, Palm Harbor, TX',
+  price: 2700,
+};
 
 export const StartSection = (): JSX.Element => {
   return (
@@ -69,16 +77,13 @@ export const StartSection = (): JSX.Element => {
 
       <aside className='relative flex h-full w-full items-center justify-center md:w-[50%] md:items-stretch md:justify-normal'>
         <Card
-          img='/apartment3.png'
-          title='Beverly Springfield'
-          location='2821 Lake Sevilla, Palm Harbor, TX'
-          price='2700'
+          construction={featuredConstruction}
           shouldBeLiked={false}
           className='absolute top-[50%] left-[-9%] z-[3] translate-y-[-50%] scale-[50%] sm:left-[-3%] sm:scale-[60%] md:top-[42%] md:left-[-24px] md:scale-none lg:left-[-42px]'
           animation={{
-            initial: { opacity: 0, x: 50 },
+            initial: { opacity: 0.3, x: '100vw' },
             animate: { opacity: 1, x: 0 },
-            transition: { duration: 1.2, delay: 1.5 },
+            transition: { duration: 2.5, delay: 0.4 },
           }}
         />
 
