@@ -20,7 +20,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-export const signInWithGoogle = async () => {
+export const signInWithGoogle = async (
+  setAlertProps: (props: {
+    text: string;
+    type: 'error' | 'success';
+    position: 'top' | 'bottom';
+  }) => void
+) => {
   try {
     const provider = new GoogleAuthProvider();
 
@@ -34,8 +40,10 @@ export const signInWithGoogle = async () => {
         email: user.email ?? 'Unknown Email',
 
         // Additional info
-        os: (navigator as any).userAgentData.platform,
-        memory: `At least ${(navigator as any).deviceMemory} GB of RAM`,
+        os: navigator.userAgentData?.platform ?? 'Unknown',
+        memory: navigator
+          ? `At least ${navigator.deviceMemory} GB of RAM`
+          : 'Unknown Memory',
         local: navigator.languages
           ? navigator.languages[0]
           : navigator.language,
@@ -46,13 +54,29 @@ export const signInWithGoogle = async () => {
     }
   } catch (error) {
     LogRocket.error('Error signing in with Google:', error);
+    setAlertProps({
+      text: 'Failed to sign in',
+      type: 'error',
+      position: 'top',
+    });
   }
 };
 
-export const logout = async () => {
+export const logout = async (
+  setAlertProps: (props: {
+    text: string;
+    type: 'error' | 'success';
+    position: 'top' | 'bottom';
+  }) => void
+) => {
   try {
     await signOut(auth);
   } catch (error) {
     LogRocket.error('Error signing out:', error);
+    setAlertProps({
+      text: 'Failed to sign out',
+      type: 'error',
+      position: 'top',
+    });
   }
 };

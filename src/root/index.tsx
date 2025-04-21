@@ -5,8 +5,7 @@ import { BrowseHomes } from 'src/components/BrowseHomes';
 import { TestimonialsSection } from 'src/components/TestimonialsSection';
 import { Footer } from 'src/components/Footer';
 import LogRocket from 'logrocket';
-import { Alert } from 'src/components/Alert';
-import { AlertProps } from 'src/types';
+import { Alert, AlertProps } from 'src/components/Alert';
 
 LogRocket.init('p4ccjl/recruitment-task-vlayer');
 

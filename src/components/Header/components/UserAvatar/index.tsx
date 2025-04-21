@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logout } from 'src/api/firebase';
 import { auth } from 'src/api/firebase';
 import ClickAwayListener from 'react-click-away-listener';
+import { GlobalContext } from 'src/root';
 
 export const UserAvatar = () => {
+  const { setAlertProps } = useContext(GlobalContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { currentUser } = auth;
@@ -12,7 +15,8 @@ export const UserAvatar = () => {
   const firstLetter = email?.charAt(0).toUpperCase();
 
   const handleLogout = async () => {
-    await logout();
+    await logout(setAlertProps);
+
     setIsMenuOpen(false);
   };
 

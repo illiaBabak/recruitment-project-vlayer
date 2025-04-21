@@ -14,9 +14,3 @@ export type Testimonial = {
 };
 
 export type ConstructionCategory = 'House' | 'Apartment';
-
-export type AlertProps = {
-  text: string;
-  type: 'success' | 'error';
-  position: 'top' | 'bottom';
-};

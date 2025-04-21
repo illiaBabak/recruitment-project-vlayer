@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { JSX, useState } from 'react';
 import { TESTIMONIALS } from 'src/utils/constants';
+import { TestimonialAuthor } from './components/TestimonialAuthor';
 
 export const TestimonialsSection = (): JSX.Element => {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
@@ -8,7 +9,7 @@ export const TestimonialsSection = (): JSX.Element => {
   const currentTestimonial = TESTIMONIALS[activeTestimonialIndex];
 
   return (
-    <div className='relative flex min-h-screen w-screen flex-col items-center justify-start gap-8 bg-gradient-to-t from-[rgba(240,235,252,1)] to-white px-8 pt-10 pb-8 md:justify-center md:pt-0'>
+    <div className='relative flex h-auto w-screen flex-col items-center justify-start gap-8 bg-gradient-to-t from-[rgba(240,235,252,1)] to-white px-8 pt-10 pb-8 md:min-h-screen md:justify-center md:pt-0'>
       <h2 className='text-[40px] font-bold'>Testimonials</h2>
       <p className='mb-2 w-[280px] text-center text-base text-gray-600 md:w-[352px]'>
         See what our property managers, landlords, and tenants have to say
@@ -41,33 +42,13 @@ export const TestimonialsSection = (): JSX.Element => {
 
       <div className='bottom-[10%] left-1/2 flex gap-1 md:absolute md:-translate-x-1/2 md:gap-4'>
         {TESTIMONIALS.map((testimonial, index) => (
-          <div
+          <TestimonialAuthor
             data-testid={`testimonial-${index}`}
             key={`${testimonial.authorName}-${index}`}
-            className='relative mx-3 flex h-[72px] w-[72px] cursor-pointer items-center justify-center transition-all duration-300'
-            onClick={() => setActiveTestimonialIndex(index)}
-          >
-            {activeTestimonialIndex === index && (
-              <div className='absolute top-0 left-0 h-[72px] w-[72px]'>
-                <img
-                  src='/avatar-grey-ellipse.png'
-                  alt='ellipse1'
-                  className='absolute top-0 left-0 z-[4] min-h-[72px] min-w-[72px] object-contain'
-                />
-                <img
-                  src='/avatar-purple-ellipse.png'
-                  alt='ellipse2'
-                  className='absolute top-[-3.5px] left-[3px] z-[4] min-h-[72px] min-w-[72px] scale-[91.8%] object-contain'
-                />
-              </div>
-            )}
-
-            <img
-              src={testimonial.authorImage}
-              alt={testimonial.authorName}
-              className='h-[60px] w-[60px] rounded-full object-cover shadow-lg'
-            />
-          </div>
+            testimonial={testimonial}
+            isSelectedAuthor={activeTestimonialIndex === index}
+            setActiveTestimonialIndex={() => setActiveTestimonialIndex(index)}
+          />
         ))}
       </div>
     </div>

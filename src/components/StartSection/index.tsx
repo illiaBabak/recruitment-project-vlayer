@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from 'src/utils/animations';
-import { Card } from '../ConstructionCard';
+import { ConstructionCard } from 'src/components/ConstructionCard';
 import { FEATURED_CONSTRUCTION } from 'src/utils/constants';
 
 export const StartSection = (): JSX.Element => {
@@ -74,7 +74,7 @@ export const StartSection = (): JSX.Element => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.5 }}
         >
-          <Card
+          <ConstructionCard
             className='scale-[50%] sm:scale-[60%] md:scale-none'
             construction={FEATURED_CONSTRUCTION}
           />
@@ -82,7 +82,7 @@ export const StartSection = (): JSX.Element => {
 
         <img
           className='h-[75%] w-[75%] object-cover md:h-screen md:w-full'
-          src='/map.png'
+          src='src/images/map.png'
           alt='map-logo'
         />
       </aside>

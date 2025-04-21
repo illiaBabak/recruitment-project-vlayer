@@ -21,18 +21,6 @@ export const Header = (): JSX.Element => {
     return () => unsubscribe();
   }, []);
 
-  const handleGoogleAuth = async () => {
-    try {
-      await signInWithGoogle();
-    } catch {
-      setAlertProps({
-        text: 'Failed to sign in',
-        type: 'error',
-        position: 'top',
-      });
-    }
-  };
-
   return (
     <motion.header
       variants={{
@@ -88,14 +76,14 @@ export const Header = (): JSX.Element => {
             <motion.button
               variants={fadeInUp}
               className={`active:border-secondary-1000 active:text-secondary-1000 border-base-300 hover:border-accent-100 focus:border-accent-100 focus:text-accent-100 disabled:bg-paragraph disabled:border-paragraph h-[38px] w-[69px] cursor-pointer rounded-lg border-2 text-sm leading-[150%] font-bold md:text-base lg:h-[48px] lg:w-[119px]`}
-              onClick={handleGoogleAuth}
+              onClick={async () => await signInWithGoogle(setAlertProps)}
             >
               Login
             </motion.button>
             <motion.button
               variants={fadeInUp}
               className={`active:bg-secondary-600 active:border-secondary-600 border-accent-100 bg-accent-100 hover:bg-secondary-100 focus:bg-accent-100 focus:border-secondary-800 hover:border-secondary-100 disabled:text-disabled-text disabled:bg-paragraph h-[38px] w-[69px] cursor-pointer rounded-lg border-2 text-sm leading-[150%] font-bold text-white md:text-base lg:h-[48px] lg:w-[119px]`}
-              onClick={handleGoogleAuth}
+              onClick={async () => await signInWithGoogle(setAlertProps)}
             >
               Sign Up
             </motion.button>
@@ -128,7 +116,6 @@ export const Header = (): JSX.Element => {
         <MobileMenu
           isAuthenticated={isAuthenticated}
           setIsPopoverMenuOpen={setIsPopoverMenuOpen}
-          handleGoogleAuth={handleGoogleAuth}
         />
       )}
     </motion.header>

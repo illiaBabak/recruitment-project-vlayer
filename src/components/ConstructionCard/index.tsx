@@ -10,7 +10,7 @@ type Props = {
   animation?: MotionProps;
 };
 
-export const Card = ({
+export const ConstructionCard = ({
   construction,
   shouldShowLikeButton,
   className,

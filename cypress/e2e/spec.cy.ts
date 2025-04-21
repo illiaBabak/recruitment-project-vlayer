@@ -34,16 +34,13 @@ describe('Homepage Tests', () => {
         // Click on second testimonial
         cy.get('[data-testid="testimonial-1"]').click();
 
-        cy.get('[data-testid="testimonial-text"]').should('exist');
+        cy.get('[data-testid="testimonial-text"]')
+          .should('not.have.text', initialText)
+          .should('not.be.empty');
 
-        cy.get('[data-testid="testimonial-text"]').should(
-          'not.have.text',
-          initialText
-        );
-        cy.get('[data-testid="testimonial-author"]').should(
-          'not.have.text',
-          initialAuthor
-        );
+        cy.get('[data-testid="testimonial-author"]')
+          .should('not.have.text', initialAuthor)
+          .should('not.be.empty');
 
         cy.get('[data-testid="testimonial-0"]').click();
 

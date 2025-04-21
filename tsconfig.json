@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2020", // Or esnext, depending on your needs
-    "module": "esnext", // Allows import.meta and modern module syntax
+    "target": "ES2023", // Or esnext, depending on your needs
+    "module": "ESNext", // Allows import.meta and modern module syntax
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -15,7 +15,7 @@
     },
     "jsx": "react-jsx",
     "types": ["cypress"],
-    "lib": ["es5", "es6", "dom", "dom.iterable"]
+    "lib": ["es5", "es6", "dom", "dom.iterable", "ES2023"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

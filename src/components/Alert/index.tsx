@@ -1,6 +1,11 @@
 import { JSX } from 'react';
-import { AlertProps } from 'src/types';
 import { motion } from 'framer-motion';
+
+export type AlertProps = {
+  text: string;
+  type: 'success' | 'error';
+  position: 'top' | 'bottom';
+};
 
 type AlertComponentProps = AlertProps & {
   onClose: () => void;
