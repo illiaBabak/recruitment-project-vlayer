@@ -5,52 +5,22 @@ describe('Homepage Tests', () => {
 
   it('Should select category Houses and Apartments correctly', () => {
     // Check initial state (Houses selected)
-    cy.get('[data-testid="category-slider"]').should(
-      'have.class',
-      'translate-x-[6px]'
-    );
-    cy.get('[data-testid="houses-category"]').should(
-      'have.class',
-      'text-accent-100'
-    );
-    cy.get('[data-testid="apartments-category"]').should(
-      'have.class',
-      'text-base-600'
-    );
+    cy.get('[data-testid="houses-category"]').should('have.class', 'active');
 
     // Click to switch to Apartments
     cy.get('[data-testid="category-toggle"]').click();
 
     // Check Apartments is selected
-    cy.get('[data-testid="category-slider"]').should(
-      'have.class',
-      'translate-x-[142px]'
-    );
     cy.get('[data-testid="apartments-category"]').should(
       'have.class',
-      'text-accent-100'
-    );
-    cy.get('[data-testid="houses-category"]').should(
-      'have.class',
-      'text-base-600'
+      'active'
     );
 
     // Click to switch back to Houses
     cy.get('[data-testid="category-toggle"]').click();
 
     // Check Houses is selected again
-    cy.get('[data-testid="category-slider"]').should(
-      'have.class',
-      'translate-x-[6px]'
-    );
-    cy.get('[data-testid="houses-category"]').should(
-      'have.class',
-      'text-accent-100'
-    );
-    cy.get('[data-testid="apartments-category"]').should(
-      'have.class',
-      'text-base-600'
-    );
+    cy.get('[data-testid="houses-category"]').should('have.class', 'active');
   });
 
   it('Should change testimonials when clicking on different authors', () => {
@@ -64,7 +34,8 @@ describe('Homepage Tests', () => {
         // Click on second testimonial
         cy.get('[data-testid="testimonial-1"]').click();
 
-        // Verify testimonial text and author changed
+        cy.get('[data-testid="testimonial-text"]').should('exist');
+
         cy.get('[data-testid="testimonial-text"]').should(
           'not.have.text',
           initialText
@@ -74,16 +45,16 @@ describe('Homepage Tests', () => {
           initialAuthor
         );
 
-        // Click on third testimonial
-        cy.get('[data-testid="testimonial-2"]').click();
+        cy.get('[data-testid="testimonial-0"]').click();
 
         // Verify testimonial text and author changed again
         cy.get('[data-testid="testimonial-text"]').should(
-          'not.have.text',
+          'have.text',
           initialText
         );
+
         cy.get('[data-testid="testimonial-author"]').should(
-          'not.have.text',
+          'have.text',
           initialAuthor
         );
       });

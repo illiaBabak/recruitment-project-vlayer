@@ -5,6 +5,8 @@ import { TESTIMONIALS } from 'src/utils/constants';
 export const TestimonialsSection = (): JSX.Element => {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
 
+  const currentTestimonial = TESTIMONIALS[activeTestimonialIndex];
+
   return (
     <div className='relative flex min-h-screen w-screen flex-col items-center justify-start gap-8 bg-gradient-to-t from-[rgba(240,235,252,1)] to-white px-8 pt-10 pb-8 md:justify-center md:pt-0'>
       <h2 className='text-[40px] font-bold'>Testimonials</h2>
@@ -22,17 +24,17 @@ export const TestimonialsSection = (): JSX.Element => {
       >
         <p
           data-testid='testimonial-text'
-          className='mb-4 w-[95%] text-xl leading-[160%] md:h-[96px] md:w-[80%] lg:w-[65%]'
+          className='mb-4 w-[95%] text-xl leading-[160%] md:min-h-[96px] md:w-[80%] lg:w-[65%]'
         >
-          {TESTIMONIALS[activeTestimonialIndex].testimonial}
+          {currentTestimonial.testimonial}
         </p>
         <p data-testid='testimonial-author'>
           <span className='font-semibold text-black'>
-            {TESTIMONIALS[activeTestimonialIndex].authorName},
+            {currentTestimonial.authorName},
           </span>
           <span className='text-base-600'>
             {' '}
-            {TESTIMONIALS[activeTestimonialIndex].authorRole}
+            {currentTestimonial.authorRole}
           </span>
         </p>
       </motion.div>
@@ -59,6 +61,7 @@ export const TestimonialsSection = (): JSX.Element => {
                 />
               </div>
             )}
+
             <img
               src={testimonial.authorImage}
               alt={testimonial.authorName}

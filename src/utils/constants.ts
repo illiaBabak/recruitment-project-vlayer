@@ -1,5 +1,21 @@
 import { Construction, Testimonial } from 'src/types';
 
+export const FEATURED_CONSTRUCTION: Construction = {
+  image: '/apartment3.png',
+  name: 'Beverly Springfield',
+  location: '2821 Lake Sevilla, Palm Harbor, TX',
+  price: 2700,
+};
+
+export const FOOTER_LINKS = ['Help Center', 'FAQ', 'Terms & Privacy'] as const;
+
+export const SOCIAL_MEDIA = [
+  'facebook',
+  'instagram',
+  'twitter',
+  'linkedin',
+] as const;
+
 export const SECTIONS = [
   'Rent',
   'Buy',

@@ -1,21 +1,13 @@
 import { JSX } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from 'src/utils/animations';
-import { Card } from '../Card';
-import { Construction } from 'src/types';
-
-const featuredConstruction: Construction = {
-  image: '/apartment3.png',
-  name: 'Beverly Springfield',
-  location: '2821 Lake Sevilla, Palm Harbor, TX',
-  price: 2700,
-};
+import { Card } from '../ConstructionCard';
+import { FEATURED_CONSTRUCTION } from 'src/utils/constants';
 
 export const StartSection = (): JSX.Element => {
   return (
     <motion.section
       variants={{
-        hidden: {},
         show: {
           transition: {
             staggerChildren: 0.3,
@@ -24,7 +16,7 @@ export const StartSection = (): JSX.Element => {
       }}
       initial='hidden'
       animate='show'
-      className='mt-[96px] flex min-h-[calc(100vh-96px)] w-full flex-col md:flex-row'
+      className='mt-[96px] flex min-h-[calc(100vh-96px)] w-full flex-col overflow-hidden md:flex-row'
     >
       <aside className='bg-start-section relative flex w-full flex-col items-start justify-center md:w-[50%]'>
         {/* Gradient overlay with blur effect */}
@@ -76,16 +68,17 @@ export const StartSection = (): JSX.Element => {
       </aside>
 
       <aside className='relative flex h-full w-full items-center justify-center md:w-[50%] md:items-stretch md:justify-normal'>
-        <Card
-          construction={featuredConstruction}
-          shouldBeLiked={false}
-          className='absolute top-[50%] left-[-9%] z-[3] translate-y-[-50%] scale-[50%] sm:left-[-3%] sm:scale-[60%] md:top-[42%] md:left-[-24px] md:scale-none lg:left-[-42px]'
-          animation={{
-            initial: { opacity: 0.3, x: '100vw' },
-            animate: { opacity: 1, x: 0 },
-            transition: { duration: 2.5, delay: 0.4 },
-          }}
-        />
+        <motion.div
+          className='absolute top-[50%] left-[-9%] z-[3] translate-y-[-50%] sm:left-[-3%] md:top-[42%] md:left-[-24px] lg:left-[-42px]'
+          initial={{ opacity: 0, x: '100vw' }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.5 }}
+        >
+          <Card
+            className='scale-[50%] sm:scale-[60%] md:scale-none'
+            construction={FEATURED_CONSTRUCTION}
+          />
+        </motion.div>
 
         <img
           className='h-[75%] w-[75%] object-cover md:h-screen md:w-full'

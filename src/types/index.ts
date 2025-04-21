@@ -3,14 +3,20 @@ export type Construction = {
   name: string;
   location: string;
   price: number;
-  type?: 'House' | 'Apartment';
+  type?: ConstructionCategory;
 };
 
 export type Testimonial = {
   testimonial: string;
   authorName: string;
   authorImage: string;
-  authorRole: 'Renter';
+  authorRole: string;
 };
 
-export type ConstructionCategory = 'Houses' | 'Apartments';
+export type ConstructionCategory = 'House' | 'Apartment';
+
+export type AlertProps = {
+  text: string;
+  type: 'success' | 'error';
+  position: 'top' | 'bottom';
+};

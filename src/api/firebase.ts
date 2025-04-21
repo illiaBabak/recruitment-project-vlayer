@@ -6,6 +6,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import LogRocket from 'logrocket';
+import { getZoomLevel } from 'src/utils/getZoomLevel';
 
 const firebaseConfig = {
   apiKey: import.meta.env.ENV_FIREBASE_API_KEY,
@@ -23,17 +24,28 @@ export const signInWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
 
-    const user = await signInWithPopup(auth, provider);
+    const response = await signInWithPopup(auth, provider);
 
-    if (user.user.displayName && user.user.email) {
-      LogRocket.identify(user.user.uid, {
-        name: user.user.displayName,
-        email: user.user.email,
+    const { user } = response;
+
+    if (user) {
+      LogRocket.identify(user.uid, {
+        name: user.displayName ?? 'Unknown Name',
+        email: user.email ?? 'Unknown Email',
+
+        // Additional info
+        os: (navigator as any).userAgentData.platform,
+        memory: `At least ${(navigator as any).deviceMemory} GB of RAM`,
+        local: navigator.languages
+          ? navigator.languages[0]
+          : navigator.language,
+        zoomLevel: getZoomLevel(),
+        screenWidth: window.innerWidth,
+        screenHeight: window.innerHeight,
       });
     }
   } catch (error) {
     LogRocket.error('Error signing in with Google:', error);
-    throw error;
   }
 };
 
@@ -42,6 +54,5 @@ export const logout = async () => {
     await signOut(auth);
   } catch (error) {
     LogRocket.error('Error signing out:', error);
-    throw error;
   }
 };

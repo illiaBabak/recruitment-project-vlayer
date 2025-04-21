@@ -1,26 +1,28 @@
 import { JSX, useState } from 'react';
 import { CONSTRUCTIONS } from 'src/utils/constants';
-import { Card } from '../Card';
+import { Card } from '../ConstructionCard';
 import { ConstructionCategory } from 'src/types';
 
 export const BrowseHomes = (): JSX.Element => {
   const [currentCategory, setCurrentCategory] =
-    useState<ConstructionCategory>('Houses');
+    useState<ConstructionCategory>('House');
+
+  const isHousesCategorySelected = currentCategory === 'House';
 
   const handleToggle = () =>
-    setCurrentCategory(currentCategory === 'Houses' ? 'Apartments' : 'Houses');
+    setCurrentCategory((prev) => (prev === 'House' ? 'Apartment' : 'House'));
 
   return (
     <div className='mt-12 flex min-h-screen w-full flex-col items-center p-0 sm:px-4 sm:pt-12 md:p-12'>
       <div
         data-testid='category-toggle'
-        className='bg-secondary-0 border-base-300 relative h-[64px] w-[280px] cursor-pointer rounded-lg border-[1px] p-1 sm:w-[352px]'
+        className='bg-base-100 border-base-300 relative h-[64px] w-[280px] cursor-pointer rounded-lg border-[1px] p-1 sm:w-[352px]'
         onClick={handleToggle}
       >
         <div
           data-testid='category-slider'
-          className={`border-base-300 absolute top-[50%] h-[48px] w-[120px] translate-y-[-50%] rounded-lg border-[1px] bg-white shadow-md transition-transform duration-300 ease-in-out sm:w-[151px] ${
-            currentCategory === 'Houses'
+          className={`border-base-300 hover:bg-secondary-0 active:border-accent-100 active:bg-secondary-300 absolute top-[50%] z-[3] h-[48px] w-[120px] translate-y-[-50%] rounded-lg border-[1px] bg-white shadow-md transition-transform duration-300 ease-in-out sm:w-[151px] ${
+            isHousesCategorySelected
               ? 'translate-x-[6px]'
               : 'translate-x-[142px] sm:translate-x-[180px]'
           }`}
@@ -28,9 +30,9 @@ export const BrowseHomes = (): JSX.Element => {
         <div className='relative flex h-full'>
           <div
             data-testid='houses-category'
-            className={`z-[3] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
-              currentCategory === 'Houses'
-                ? 'text-accent-100 font-bold'
+            className={`hover:text-accent-100 z-[4] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
+              isHousesCategorySelected
+                ? 'text-accent-100 active pointer-events-none font-bold'
                 : 'text-base-600 font-medium'
             }`}
           >
@@ -38,10 +40,10 @@ export const BrowseHomes = (): JSX.Element => {
           </div>
           <div
             data-testid='apartments-category'
-            className={`z-[3] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
-              currentCategory === 'Apartments'
-                ? 'text-accent-100 font-bold'
-                : 'text-base-600 font-medium'
+            className={`hover:text-accent-100 z-[4] flex flex-1 items-center justify-center text-lg transition-colors duration-300 ${
+              isHousesCategorySelected
+                ? 'text-base-600 font-medium'
+                : 'text-accent-100 active pointer-events-none font-bold'
             }`}
           >
             Apartments
@@ -61,12 +63,12 @@ export const BrowseHomes = (): JSX.Element => {
 
         <div className='-mx-1 mt-12 flex h-[300px] flex-row items-center justify-start gap-4 overflow-x-auto overflow-y-hidden px-4 md:justify-center md:overflow-visible lg:gap-8'>
           {CONSTRUCTIONS.filter(
-            (construction) => construction.type === currentCategory.slice(0, -1)
+            (construction) => currentCategory === construction.type
           ).map((el, index) => (
             <Card
               key={`construction-${el.name}-${index}-${el.type}`}
               construction={el}
-              shouldBeLiked={true}
+              shouldShowLikeButton={true}
               className='relative w-[260px] flex-shrink-0 md:w-auto'
               animation={{
                 initial: { opacity: 0 },

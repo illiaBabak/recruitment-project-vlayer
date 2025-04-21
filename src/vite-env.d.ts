@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="@types/node/timers"/>
 
 interface ImportMetaEnv {
   readonly ENV_SUPABASE_KEY: string;
