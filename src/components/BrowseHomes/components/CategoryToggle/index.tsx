@@ -20,7 +20,7 @@ export const CategoryToggle = ({
         className={`border-base-300 hover:bg-secondary-0 active:border-accent-100 active:bg-secondary-300 absolute top-[50%] z-[3] h-[48px] w-[120px] translate-y-[-50%] rounded-lg border-[1px] bg-white shadow-md transition-transform duration-300 ease-in-out sm:w-[165px] ${
           isHousesCategorySelected
             ? 'translate-x-[1px]'
-            : 'translate-x-[145px] sm:translate-x-[171px]'
+            : 'translate-x-[141px] sm:translate-x-[171px]'
         }`}
       />
       <div className='relative flex h-[48px] gap-[12px]'>

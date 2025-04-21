@@ -2,18 +2,21 @@ import { JSX } from 'react';
 import { Testimonial } from 'src/types';
 
 type Props = {
+  dataTestId: string;
   testimonial: Testimonial;
   isSelectedAuthor: boolean;
   setActiveTestimonial: () => void;
 };
 
 export const TestimonialAuthor = ({
+  dataTestId,
   testimonial,
   isSelectedAuthor,
   setActiveTestimonial,
 }: Props): JSX.Element => {
   return (
     <div
+      data-testid={dataTestId}
       className='relative mx-3 flex h-[72px] w-[72px] cursor-pointer items-center justify-center transition-all duration-300'
       onClick={() => setActiveTestimonial()}
     >

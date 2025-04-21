@@ -38,7 +38,7 @@ export const TestimonialsSection = (): JSX.Element => {
       <div className='bottom-[10%] left-1/2 flex gap-1 md:absolute md:-translate-x-1/2 md:gap-4'>
         {TESTIMONIALS.map((testimonial, index) => (
           <TestimonialAuthor
-            data-testid={`testimonial-${index}`}
+            dataTestId={`testimonial-${index}`}
             key={`${testimonial.authorName}-${index}`}
             testimonial={testimonial}
             isSelectedAuthor={
