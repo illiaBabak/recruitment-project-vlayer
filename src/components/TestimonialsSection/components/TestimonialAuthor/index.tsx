@@ -4,18 +4,18 @@ import { Testimonial } from 'src/types';
 type Props = {
   testimonial: Testimonial;
   isSelectedAuthor: boolean;
-  setActiveTestimonialIndex: () => void;
+  setActiveTestimonial: () => void;
 };
 
 export const TestimonialAuthor = ({
   testimonial,
   isSelectedAuthor,
-  setActiveTestimonialIndex,
+  setActiveTestimonial,
 }: Props): JSX.Element => {
   return (
     <div
       className='relative mx-3 flex h-[72px] w-[72px] cursor-pointer items-center justify-center transition-all duration-300'
-      onClick={() => setActiveTestimonialIndex()}
+      onClick={() => setActiveTestimonial()}
     >
       {isSelectedAuthor && (
         <div className='absolute top-0 left-0 h-[72px] w-[72px]'>

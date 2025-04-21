@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import LogRocket from 'logrocket';
 import { getZoomLevel } from 'src/utils/getZoomLevel';
-
+import { AlertProps } from 'src/components/Alert';
 const firebaseConfig = {
   apiKey: import.meta.env.ENV_FIREBASE_API_KEY,
   authDomain: import.meta.env.ENV_FIREBASE_AUTH_DOMAIN,
@@ -21,11 +21,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const signInWithGoogle = async (
-  setAlertProps: (props: {
-    text: string;
-    type: 'error' | 'success';
-    position: 'top' | 'bottom';
-  }) => void
+  setAlertProps: (props: AlertProps) => void
 ) => {
   try {
     const provider = new GoogleAuthProvider();
@@ -62,13 +58,7 @@ export const signInWithGoogle = async (
   }
 };
 
-export const logout = async (
-  setAlertProps: (props: {
-    text: string;
-    type: 'error' | 'success';
-    position: 'top' | 'bottom';
-  }) => void
-) => {
+export const logout = async (setAlertProps: (props: AlertProps) => void) => {
   try {
     await signOut(auth);
   } catch (error) {

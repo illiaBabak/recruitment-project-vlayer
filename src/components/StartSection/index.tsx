@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { fadeInUp } from 'src/utils/animations';
 import { ConstructionCard } from 'src/components/ConstructionCard';
 import { FEATURED_CONSTRUCTION } from 'src/utils/constants';
+import mapImg from 'src/images/map.png';
 
 export const StartSection = (): JSX.Element => {
   return (
@@ -82,7 +83,7 @@ export const StartSection = (): JSX.Element => {
 
         <img
           className='h-[75%] w-[75%] object-cover md:h-screen md:w-full'
-          src='src/images/map.png'
+          src={mapImg}
           alt='map-logo'
         />
       </aside>
